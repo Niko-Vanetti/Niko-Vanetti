@@ -72,8 +72,9 @@
 
 | Proyecto | Stack | Qué es | Estado |
 | --- | --- | --- | --- |
-| **[game-guard](https://github.com/Niko-Vanetti/game-guard)** | `Python` | Bloqueo de videojuegos por horario en Windows | público |
+| **mercurio-platform** | `TypeScript` | - | privado |
 | **mercurio-experience** | `TypeScript` | - | privado |
+| **[game-guard](https://github.com/Niko-Vanetti/game-guard)** | `Python` | Bloqueo de videojuegos por horario en Windows | público |
 | **mercurio-consola** | `TypeScript` | - | privado |
 | **niko-ide-verilog** | `TypeScript` | - | privado |
 | **niko-agents** | `Python` | - | privado |
@@ -121,6 +122,6 @@ Todo este perfil está generado por código. La cabecera, las métricas, el grá
 
 <div align="center">
 
-_Última actualización: 2026-07-02 07:27 UTC_
+_Última actualización: 2026-07-03 07:26 UTC_
 
 </div>
