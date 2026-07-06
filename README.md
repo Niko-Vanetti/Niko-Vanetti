@@ -72,8 +72,8 @@
 
 | Proyecto | Stack | Qué es | Estado |
 | --- | --- | --- | --- |
-| **[niko-skills](https://github.com/Niko-Vanetti/niko-skills)** | `-` | Colección de skills genéricas para Claude Code / agentes IA — dev, negocio, contenido | público |
 | **niko-skills-unlocked** | `-` | Backup privado y completo de todas mis skills de Claude Code (incluye las personales) | privado |
+| **[niko-skills](https://github.com/Niko-Vanetti/niko-skills)** | `-` | Colección de skills genéricas para Claude Code / agentes IA — dev, negocio, contenido | público |
 | **mercurio-platform** | `TypeScript` | - | privado |
 | **[game-guard](https://github.com/Niko-Vanetti/game-guard)** | `Python` | Bloqueo de videojuegos por horario en Windows | público |
 | **niko-ide-verilog** | `TypeScript` | - | privado |
@@ -120,6 +120,6 @@ Todo este perfil está generado por código. La cabecera, las métricas, el grá
 
 <div align="center">
 
-_Última actualización: 2026-07-05 07:26 UTC_
+_Última actualización: 2026-07-06 07:52 UTC_
 
 </div>
