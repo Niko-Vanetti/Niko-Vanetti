@@ -72,6 +72,7 @@
 
 | Proyecto | Stack | Qué es | Estado |
 | --- | --- | --- | --- |
+| **key-rotator** | `TypeScript` | KeyRotator: VS Code extension to rotate AI provider API keys and run an agent (NVIDIA Build/OpenRouter) with tools, agency mode and viability analysis | privado |
 | **niko-skills-unlocked** | `-` | Backup privado y completo de todas mis skills de Claude Code (incluye las personales) | privado |
 | **[niko-skills](https://github.com/Niko-Vanetti/niko-skills)** | `-` | Colección de skills genéricas para Claude Code / agentes IA — dev, negocio, contenido | público |
 | **mercurio-platform** | `TypeScript` | - | privado |
@@ -120,6 +121,6 @@ Todo este perfil está generado por código. La cabecera, las métricas, el grá
 
 <div align="center">
 
-_Última actualización: 2026-07-20 07:23 UTC_
+_Última actualización: 2026-07-21 07:11 UTC_
 
 </div>
