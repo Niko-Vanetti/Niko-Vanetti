@@ -72,12 +72,12 @@
 
 | Proyecto | Stack | Qué es | Estado |
 | --- | --- | --- | --- |
+| **niko-ide-verilog** | `TypeScript` | - | privado |
 | **key-rotator** | `TypeScript` | KeyRotator: VS Code extension to rotate AI provider API keys and run an agent (NVIDIA Build/OpenRouter) with tools, agency mode and viability analysis | privado |
 | **niko-skills-unlocked** | `-` | Backup privado y completo de todas mis skills de Claude Code (incluye las personales) | privado |
 | **[niko-skills](https://github.com/Niko-Vanetti/niko-skills)** | `-` | Colección de skills genéricas para Claude Code / agentes IA — dev, negocio, contenido | público |
 | **mercurio-platform** | `TypeScript` | - | privado |
 | **[game-guard](https://github.com/Niko-Vanetti/game-guard)** | `Python` | Bloqueo de videojuegos por horario en Windows | público |
-| **niko-ide-verilog** | `TypeScript` | - | privado |
 | **niko-agents** | `Python` | - | privado |
 | **Jose_Sanchez_PM_2025_C2** | `C` | Repositorio con las tareas de Programación para Mecatrónicos del C2 del ITLA. | privado |
 | **[Windows-Startup-Manager](https://github.com/Niko-Vanetti/Windows-Startup-Manager)** | `Python` | Aplicación en Python con interfaz gráfica para optimizar Windows. Permite gestionar programas de inicio y deshabilitar servicios en segundo plano no esenciales de forma totalmente segura. Esta abierta a modificaciones! | público |
@@ -121,6 +121,6 @@ Todo este perfil está generado por código. La cabecera, las métricas, el grá
 
 <div align="center">
 
-_Última actualización: 2026-08-07 07:41 UTC_
+_Última actualización: 2026-08-08 07:16 UTC_
 
 </div>
