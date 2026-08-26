@@ -64,9 +64,9 @@
 
 | Proyecto | Stack | Qué es | Estado |
 | --- | --- | --- | --- |
-| **[key-rotator](https://github.com/Niko-Vanetti/key-rotator)** | `TypeScript` | Extensión de VS Code para rotar API keys de proveedores de IA y correr un agente (NVIDIA Build/OpenRouter) con herramientas, modo agencia y análisis de viabilidad. | público |
 | **[gg-groups](https://github.com/Niko-Vanetti/gg-groups)** | `JavaScript` | Toda la barra de actividad en un panel: cada icono de la barra lateral visible a la vez, agrupado en carpetas que creas arrastrando un icono sobre otro. | público |
-| **niko-ide-verilog** | `TypeScript` | IDE web de Verilog en español: editor, simulación y vista RTL en el navegador. | privado |
+| **[key-rotator](https://github.com/Niko-Vanetti/key-rotator)** | `TypeScript` | Extensión de VS Code para rotar API keys de proveedores de IA y correr un agente (NVIDIA Build/OpenRouter) con herramientas, modo agencia y análisis de viabilidad. | público |
+| **niko-ide-verilog** | `TypeScript` | IDE web de Verilog en español: editor, simulación y vista RTL en el navegador. | privado . [ver en vivo](https://ide-hdl-verilog.web.app) |
 | **niko-skills-unlocked** | `-` | Backup privado y completo de todas mis skills de Claude Code, personales incluidas. | privado |
 | **[niko-skills](https://github.com/Niko-Vanetti/niko-skills)** | `-` | Colección de skills genéricas para Claude Code / agentes IA: dev, negocio, contenido. | público |
 | **mercurio-platform** | `TypeScript` | Plataforma de Mercurio Systems: sitio web y consola de operación. | privado |
@@ -74,6 +74,7 @@
 | **niko-agents** | `Python` | Agentes y automatizaciones en Python con orquestación de flujos. | privado |
 | **Jose_Sanchez_PM_2025_C2** | `C` | Tareas de Programación para Mecatrónicos del C2 del ITLA. | privado |
 | **[Windows-Startup-Manager](https://github.com/Niko-Vanetti/Windows-Startup-Manager)** | `Python` | App de escritorio en Python para optimizar Windows: gestiona los programas de inicio y desactiva servicios en segundo plano no esenciales de forma segura. | público |
+| **[MoneyBox](https://moneyboxrd.com)** | `Web` | Ahorro por certificados al 7% garantizado y descuentos en comercios afiliados. | ver en vivo |
 
 <br/>
 
@@ -98,7 +99,7 @@ Construyo herramientas para desarrolladores, agentes de IA y sistemas embebidos/
 - IA y automatización: agentes en Python, orquestación de flujos
 - Móvil: Swift, Kotlin / Java
 
-Todo este perfil está generado por código. La cabecera, las métricas, el gráfico de lenguajes y la lista de proyectos se renderizan con datos reales de los repos mediante [`generate.py`](./generate.py) y se refrescan solos con una GitHub Action. Nada aquí se edita a mano.
+Todo este perfil está generado por código. La cabecera, las métricas, el gráfico de lenguajes y la lista de proyectos se renderizan con datos reales de los repos mediante [`generate.py`](./generate.py) y se refrescan solos con una GitHub Action. Lo único escrito a mano son los proyectos que no viven en un repo mío.
 
 <br/>
 
@@ -116,6 +117,6 @@ Todo este perfil está generado por código. La cabecera, las métricas, el grá
 
 <div align="center">
 
-_Última actualización: 2026-08-26 07:09 UTC_
+_Última actualización: 2026-08-26 18:15 UTC_
 
 </div>
