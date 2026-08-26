@@ -81,7 +81,7 @@
 
 <div align="center">
 
-<img width="100%" src="https://raw.githubusercontent.com/Niko-Vanetti/Niko-Vanetti/output/snake-dark.svg" alt="contribution snake"/>
+<img width="100%" src="https://raw.githubusercontent.com/Niko-Vanetti/Niko-Vanetti/output/snake-es.svg" alt="La serpiente"/>
 
 _Recorre el calendario de aquí arriba y se va comiendo los días en los que hubo actividad. Se rehace a diario con esos mismos datos._
 
@@ -116,6 +116,6 @@ Todo este perfil está generado por código. La cabecera, las métricas, el grá
 
 <div align="center">
 
-_Última actualización: 2026-08-26 02:09 UTC_
+_Última actualización: 2026-08-26 02:11 UTC_
 
 </div>

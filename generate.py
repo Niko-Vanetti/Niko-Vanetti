@@ -805,9 +805,12 @@ def quick_badges():
         f'style=for-the-badge&labelColor={_BG}" alt="focus"/>')
 
 
-def snake_img():
+def snake_img(lang):
+    """Version etiquetada con meses y dias que produce label_snake.py en la
+    rama `output`; snake-dark.svg queda como la rejilla pelada de snk."""
     base = f"https://raw.githubusercontent.com/{USERNAME}/{USERNAME}/output"
-    return f'<img width="100%" src="{base}/snake-dark.svg" alt="contribution snake"/>'
+    return (f'<img width="100%" src="{base}/snake-{lang}.svg" '
+            f'alt="{esc(STRINGS[lang]["h_snake"])}"/>')
 
 
 def connect_section():
@@ -881,7 +884,7 @@ def build_readme(lang, projects_table, updated, has_activity):
 
 <div align="center">
 
-{snake_img()}
+{snake_img(lang)}
 
 _{S['snake_note']}_
 
