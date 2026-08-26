@@ -2,7 +2,7 @@ name: Generate snake
 
 on:
   schedule:
-    - cron: "23 5 * * *"   # diario, 05:23 UTC
+    - cron: "23 5 * * *"   # diario, 05:23 UTC (antes que "Refresh profile")
   push:
     branches: [main]
     paths-ignore:
@@ -21,12 +21,24 @@ jobs:
   snake:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4          # hace falta para label_snake.py
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
       - name: Generate contribution snake
         uses: Platane/snk@v3
         with:
           github_user_name: ${{ github.repository_owner }}
+          # misma rampa que el calendario de activity-{lang}.svg, para que los
+          # dos bloques se lean como el mismo dato; la serpiente va en ambar
+          # para no confundirse con el rosa del nivel mas alto.
           outputs: |
-            dist/snake-dark.svg?palette=github-dark&color_snake=#f472b6&color_dots=#0b1230,#3b1f8f,#a855f7,#22d3ee,#fbbf24
+            dist/snake-dark.svg?palette=github-dark&color_snake=#fbbf24&color_dots=#0b2236,#164e63,#1a8fa8,#22d3ee,#f472b6
+
+      - name: Add month and weekday labels
+        run: python label_snake.py
 
       - name: Push to output branch
         uses: crazy-max/ghaction-github-pages@v4
