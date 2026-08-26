@@ -16,29 +16,21 @@
 
 <br/>
 
-## Estadísticas y racha
+## Estadísticas
 
 <div align="center">
 
-<img height="175" src="https://github-readme-stats.vercel.app/api?username=Niko-Vanetti&show_icons=true&hide_border=true&count_private=true&include_all_commits=true&custom_title=Niko%27s%20GitHub%20stats&bg_color=0b1230&title_color=f472b6&text_color=9fb3d8&icon_color=22d3ee" alt="Niko GitHub stats"/>
-&nbsp;
-<img height="175" src="https://streak-stats.demolab.com/?user=Niko-Vanetti&hide_border=true&background=0b1230&stroke=2dd4bf&ring=f472b6&fire=fbbf24&currStreakLabel=22d3ee&sideLabels=9fb3d8&dates=6b7aa8&currStreakNum=eaf2ff&sideNums=eaf2ff&dayLabels=9fb3d8" alt="streak"/>
-
-</div>
-
-## Actividad de contribuciones
-
-<div align="center">
-
-<img width="100%" src="https://github-readme-activity-graph.vercel.app/graph?username=Niko-Vanetti&custom_title=Niko%27s%20contribution%20graph&bg_color=0b1230&color=f472b6&line=22d3ee&point=fbbf24&area=true&hide_border=true" alt="Niko contribution activity"/>
+<img src="./assets/stats-es.svg" width="100%" alt="Estadísticas" />
 
 </div>
 
 <br/>
 
+## Actividad de contribuciones
+
 <div align="center">
 
-<img src="./assets/stats-es.svg" width="100%" alt="metrics" />
+<img src="./assets/activity-es.svg" width="100%" alt="ACTIVIDAD DE CONTRIBUCIONES" />
 
 </div>
 
@@ -72,13 +64,14 @@
 
 | Proyecto | Stack | Qué es | Estado |
 | --- | --- | --- | --- |
-| **niko-ide-verilog** | `TypeScript` | - | privado |
-| **key-rotator** | `TypeScript` | KeyRotator: VS Code extension to rotate AI provider API keys and run an agent (NVIDIA Build/OpenRouter) with tools, agency mode and viability analysis | privado |
+| **[gg-groups](https://github.com/Niko-Vanetti/gg-groups)** | `JavaScript` | Your whole activity bar in one panel: every sidebar icon visible at once, grouped into folders you make by dragging one icon onto another. | público |
+| **[key-rotator](https://github.com/Niko-Vanetti/key-rotator)** | `TypeScript` | KeyRotator: VS Code extension to rotate AI provider API keys and run an agent (NVIDIA Build/OpenRouter) with tools, agency mode and viability analysis | público |
+| **niko-ide-verilog** | `TypeScript` | IDE web de Verilog en español: editor, simulación y vista RTL en el navegador. | privado |
 | **niko-skills-unlocked** | `-` | Backup privado y completo de todas mis skills de Claude Code (incluye las personales) | privado |
 | **[niko-skills](https://github.com/Niko-Vanetti/niko-skills)** | `-` | Colección de skills genéricas para Claude Code / agentes IA — dev, negocio, contenido | público |
-| **mercurio-platform** | `TypeScript` | - | privado |
+| **mercurio-platform** | `TypeScript` | Plataforma de Mercurio Systems: sitio web y consola de operación. | privado |
 | **[game-guard](https://github.com/Niko-Vanetti/game-guard)** | `Python` | Bloqueo de videojuegos por horario en Windows | público |
-| **niko-agents** | `Python` | - | privado |
+| **niko-agents** | `Python` | Agentes y automatizaciones en Python con orquestación de flujos. | privado |
 | **Jose_Sanchez_PM_2025_C2** | `C` | Repositorio con las tareas de Programación para Mecatrónicos del C2 del ITLA. | privado |
 | **[Windows-Startup-Manager](https://github.com/Niko-Vanetti/Windows-Startup-Manager)** | `Python` | Aplicación en Python con interfaz gráfica para optimizar Windows. Permite gestionar programas de inicio y deshabilitar servicios en segundo plano no esenciales de forma totalmente segura. Esta abierta a modificaciones! | público |
 
@@ -121,6 +114,6 @@ Todo este perfil está generado por código. La cabecera, las métricas, el grá
 
 <div align="center">
 
-_Última actualización: 2026-08-25 07:08 UTC_
+_Última actualización: 2026-08-26 01:41 UTC_
 
 </div>

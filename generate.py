@@ -40,14 +40,21 @@ STRINGS = {
             "Embedded & mechatronics  //  C, C++, Verilog, FPGAs",
         ],
         "h_connect": "Connect",
-        "h_stats": "GitHub stats & streak",
+        "h_stats": "GitHub stats",
         "h_activity": "Contribution activity",
         "h_tech": "Tech stack",
-        "h_trophies": "Trophies",
         "h_snake": "Contribution graph",
+        "act_title": "CONTRIBUTION ACTIVITY",
+        "act_note": "// last 12 months",
+        "streaks": ["Current streak", "Longest streak", "Last 12 months"],
+        "days": "days",
+        "legend": ["Less", "More"],
+        "months": ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                   "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+        "wd": ["Mon", "Wed", "Fri"],
         "lang_title": "LANGUAGE DISTRIBUTION",
         "lang_note": "// computed from all owned repos",
-        "stats": ["Repositories", "Total stars", "Languages", "Since"],
+        "stats": ["Repos", "Commits 12m", "Contrib. 12m", "Languages", "Followers", "Since"],
         "selected": "Selected work",
         "th": ["Project", "Stack", "What it is", "Status"],
         "private": "private", "public": "public", "stars": "stars",
@@ -78,14 +85,21 @@ STRINGS = {
             "Embebidos y mecatrónica  //  C, C++, Verilog, FPGAs",
         ],
         "h_connect": "Contacto",
-        "h_stats": "Estadísticas y racha",
+        "h_stats": "Estadísticas",
         "h_activity": "Actividad de contribuciones",
         "h_tech": "Tecnologías",
-        "h_trophies": "Trofeos",
         "h_snake": "Gráfico de contribuciones",
+        "act_title": "ACTIVIDAD DE CONTRIBUCIONES",
+        "act_note": "// últimos 12 meses",
+        "streaks": ["Racha actual", "Racha más larga", "Últimos 12 meses"],
+        "days": "días",
+        "legend": ["Menos", "Más"],
+        "months": ["Ene", "Feb", "Mar", "Abr", "May", "Jun",
+                   "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
+        "wd": ["Lun", "Mié", "Vie"],
         "lang_title": "DISTRIBUCIÓN DE LENGUAJES",
         "lang_note": "// calculado desde todos mis repos",
-        "stats": ["Repositorios", "Estrellas", "Lenguajes", "Desde"],
+        "stats": ["Repos", "Commits 12m", "Contrib. 12m", "Lenguajes", "Seguidores", "Desde"],
         "selected": "Trabajo seleccionado",
         "th": ["Proyecto", "Stack", "Qué es", "Estado"],
         "private": "privado", "public": "público", "stars": "estrellas",
@@ -122,6 +136,21 @@ LINGUIST = {
     "Vue": "#41b883", "PHP": "#4F5D95", "C#": "#178600",
 }
 DEFAULT_COLOR = "#6b7280"
+
+# Respaldo para repos (normalmente privados) que no tienen `description` en
+# GitHub. Solo se usa si el repo no trae descripcion propia: en cuanto le
+# pongas una en GitHub, esta se ignora y no hay nada que mantener aqui.
+PRIVATE_DESC = {
+    "niko-ide-verilog": {
+        "es": "IDE web de Verilog en español: editor, simulación y vista RTL en el navegador.",
+        "en": "Web Verilog IDE in Spanish: editor, simulation and RTL view in the browser."},
+    "mercurio-platform": {
+        "es": "Plataforma de Mercurio Systems: sitio web y consola de operación.",
+        "en": "Mercurio Systems platform: website and operations console."},
+    "niko-agents": {
+        "es": "Agentes y automatizaciones en Python con orquestación de flujos.",
+        "en": "Python agents and automations with workflow orchestration."},
+}
 
 
 # --------------------------------------------------------------------------- #
@@ -201,6 +230,70 @@ def aggregate_languages(repos):
     return rows
 
 
+GQL_QUERY = """query($u:String!){user(login:$u){
+  followers{totalCount}
+  contributionsCollection{
+    totalCommitContributions
+    contributionCalendar{
+      totalContributions
+      weeks{firstDay contributionDays{date contributionCount weekday}}}}}}"""
+
+
+def fetch_contributions():
+    """Calendario de contribuciones via GraphQL. Devuelve None si no hay token
+    valido o la API falla: el README se genera igual, solo sin ese bloque."""
+    tk = token()
+    if not tk:
+        return None
+    body = json.dumps({"query": GQL_QUERY, "variables": {"u": USERNAME}}).encode("utf-8")
+    req = urllib.request.Request(API + "/graphql", data=body)
+    req.add_header("Authorization", "Bearer " + tk)
+    req.add_header("Content-Type", "application/json")
+    req.add_header("User-Agent", USERNAME + "-profile-generator")
+    try:
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            data = json.loads(resp.read().decode("utf-8"))
+    except Exception as e:
+        print("graphql failed:", e, file=sys.stderr)
+        return None
+    if data.get("errors") or not data.get("data", {}).get("user"):
+        print("graphql errors:", data.get("errors"), file=sys.stderr)
+        return None
+    u = data["data"]["user"]
+    cal = u["contributionsCollection"]["contributionCalendar"]
+    weeks = [[(d["date"], d["contributionCount"], d["weekday"])
+              for d in w["contributionDays"]] for w in cal["weeks"]]
+    return {
+        "weeks": weeks,
+        "total": cal["totalContributions"],
+        "commits": u["contributionsCollection"]["totalCommitContributions"],
+        "followers": u["followers"]["totalCount"],
+    }
+
+
+def streaks(weeks):
+    """(racha actual, racha mas larga) sobre el calendario, en dias.
+
+    El dia de hoy aun puede estar vacio a media manana, asi que no rompe la
+    racha: solo se descarta si tambien el anterior esta vacio."""
+    days = [(d, c) for w in weeks for (d, c, _wd) in w]
+    days.sort()
+    longest = run = 0
+    for _d, c in days:
+        run = run + 1 if c > 0 else 0
+        longest = max(longest, run)
+    tail = list(days)
+    if tail and tail[-1][1] == 0:
+        tail.pop()                      # hoy todavia sin commits: no cuenta en contra
+    current = 0
+    for _d, c in reversed(tail):
+        if c == 0:
+            break
+        current += 1
+    assert current <= longest, "la racha actual no puede superar a la mas larga"
+    return current, longest
+
+
 # --------------------------------------------------------------------------- #
 #  Utilidades                                                                  #
 # --------------------------------------------------------------------------- #
@@ -210,7 +303,7 @@ def esc(s):
 
 
 def write(path, content):
-    with open(path, "w", encoding="utf-8") as f:
+    with open(path, "w", encoding="utf-8", newline="\n") as f:
         f.write(content)
     print("wrote", os.path.relpath(path))
 
@@ -229,7 +322,7 @@ def bg_data_uri():
         return "data:image/jpeg;base64," + base64.b64encode(f.read()).decode("ascii")
 
 
-def header_svg(top_lang, roles):
+def header_svg(roles):
     """Cabecera: fondo IA (PCB neon) + nombre con gradiente que fluye, alias,
     roles rotativos y pill de estado, todo con contorno negro para legibilidad."""
     W, H = 1000, 340
@@ -467,16 +560,138 @@ def stats_svg(metrics):
 
 
 # --------------------------------------------------------------------------- #
+#  SVG: actividad de contribuciones (calendario + rachas)                      #
+# --------------------------------------------------------------------------- #
+# Rampa de intensidad: del azul apagado al cian de la identidad, con el rosa
+# reservado a los dias pico para que el mapa tenga un punto de fuga.
+HEAT = ["#0b2236", "#164e63", "#1a8fa8", "#22d3ee", "#f472b6"]
+
+
+def heat_scale(counts):
+    """Umbrales por cuantiles de los dias ACTIVOS, no por el maximo.
+
+    Con un pico de 77 y mediana de 5, dividir el maximo en cuatro mete casi
+    todo en el nivel mas bajo y el mapa se ve plano. Los cuantiles reparten
+    los dias activos en cuatro grupos parejos y el calor se lee de verdad."""
+    live = sorted(c for c in counts if c > 0)
+    if not live:
+        return [1, 2, 3, 4]
+    return [live[int(len(live) * q)] for q in (0.25, 0.5, 0.75, 0.9)]
+
+
+def heat_level(count, scale):
+    if count <= 0:
+        return 0
+    return 1 + sum(1 for t in scale[:3] if count > t)
+
+
+def activity_svg(contrib, current, longest, S):
+    weeks = contrib["weeks"]
+    scale = heat_scale([c for w in weeks for (_d, c, _wd) in w])
+
+    W, pad, gap = 1000, 28, 16
+    cell, step = 13, 17
+    gx = pad + 34                       # hueco para las etiquetas de dia
+    gy = 180
+    cardw = (W - 2 * pad - 2 * gap) / 3
+    H = 352
+
+    p = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" '
+         f'width="{W}" height="{H}" role="img" '
+         f'aria-label="{esc(S["act_title"])}: {contrib["total"]}">']
+    p.append("""<style>
+      @keyframes pop{from{opacity:0;transform:scale(.4);}to{opacity:1;transform:scale(1);}}
+      @keyframes up{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+      .d{opacity:0;animation:pop .5s cubic-bezier(.2,.8,.3,1) forwards;transform-origin:center;}
+      .c{opacity:0;animation:up .7s ease forwards;}
+      .via{animation:vp 2.6s ease-in-out infinite;}
+      @keyframes vp{0%,100%{opacity:.4;}50%{opacity:1;}}
+      text{font-family:'Cascadia Code','Consolas',ui-monospace,monospace;}
+    </style>""")
+    p.append(f'<rect width="{W}" height="{H}" rx="16" fill="#071524"/>')
+    p.append(f'<rect x="2" y="2" width="{W - 4}" height="{H - 4}" rx="15" fill="none" '
+             f'stroke="#0e2a45" stroke-width="1.5"/>')
+    for (vx, vy, dly) in [(18, 18, 0), (W - 18, 18, .6), (18, H - 18, 1.2), (W - 18, H - 18, .3)]:
+        p.append(f'<circle cx="{vx}" cy="{vy}" r="3.5" fill="#2dd4bf" class="via" '
+                 f'style="animation-delay:{dly}s"/>')
+
+    p.append(f'<text x="{pad}" y="44" fill="#e2f1f8" font-size="18" font-weight="700" '
+             f'letter-spacing="2">{esc(S["act_title"])}</text>')
+    p.append(f'<text x="{W - pad}" y="44" fill="#2dd4bf" font-size="12" text-anchor="end" '
+             f'opacity="0.8">{esc(S["act_note"])}</text>')
+
+    # ---- tres tarjetas: racha actual, racha mas larga, total del anio ----
+    cards = [(S["streaks"][0], f'{current} {S["days"]}', "#f472b6"),
+             (S["streaks"][1], f'{longest} {S["days"]}', "#fbbf24"),
+             (S["streaks"][2], str(contrib["total"]), "#22d3ee")]
+    for i, (label, value, accent) in enumerate(cards):
+        x = pad + i * (cardw + gap)
+        p.append(f'<g class="c" style="animation-delay:{i * 0.12:.2f}s">')
+        p.append(f'<rect x="{x:.1f}" y="64" width="{cardw:.1f}" height="76" rx="12" '
+                 f'fill="#081a2c" stroke="#123a55" stroke-width="1.3"/>')
+        p.append(f'<rect x="{x:.1f}" y="64" width="4" height="76" rx="2" fill="{accent}"/>')
+        p.append(f'<text x="{x + 22:.1f}" y="108" fill="#e2f1f8" font-size="28" '
+                 f'font-weight="700">{esc(value)}</text>')
+        p.append(f'<text x="{x + 22:.1f}" y="129" fill="#6f97b0" font-size="11" '
+                 f'letter-spacing="1.4">{esc(label.upper())}</text>')
+        p.append('</g>')
+
+    # ---- etiquetas de mes: una por cada cambio de mes con espacio suficiente ----
+    prev = None
+    for wi, wk in enumerate(weeks):
+        if not wk:
+            continue
+        month = int(wk[0][0][5:7])
+        if month != prev and wi < len(weeks) - 2:
+            p.append(f'<text x="{gx + wi * step}" y="170" fill="#6f97b0" font-size="11">'
+                     f'{esc(S["months"][month - 1])}</text>')
+            prev = month
+
+    # ---- etiquetas de dia (lun / mie / vie) ----
+    for row, label in ((1, S["wd"][0]), (3, S["wd"][1]), (5, S["wd"][2])):
+        p.append(f'<text x="{pad}" y="{gy + row * step + 10}" fill="#6f97b0" '
+                 f'font-size="10">{esc(label)}</text>')
+
+    # ---- rejilla ----
+    for wi, wk in enumerate(weeks):
+        for (_date, count, weekday) in wk:
+            lvl = heat_level(count, scale)
+            p.append(f'<rect x="{gx + wi * step}" y="{gy + weekday * step}" width="{cell}" '
+                     f'height="{cell}" rx="3" fill="{HEAT[lvl]}" class="d" '
+                     f'style="animation-delay:{wi * 0.014:.3f}s"/>')
+
+    # ---- leyenda ----
+    # anclada a la derecha: [Menos] [][][][][] [Mas], midiendo el texto para
+    # que los cuadros nunca se solapen con las palabras en ningun idioma.
+    ly = gy + 135
+    tw = lambda t: len(t) * 6.7 + 10          # ancho aprox. del texto mono 11
+    swatches = 5 * (cell + 4) - 4
+    more_x = W - pad
+    sw_x = more_x - tw(S["legend"][1]) - swatches
+    p.append(f'<text x="{sw_x - 10:.0f}" y="{ly + 11}" fill="#6f97b0" font-size="11" '
+             f'text-anchor="end">{esc(S["legend"][0])}</text>')
+    for i, c in enumerate(HEAT):
+        p.append(f'<rect x="{sw_x + i * (cell + 4):.0f}" y="{ly}" width="{cell}" '
+                 f'height="{cell}" rx="3" fill="{c}"/>')
+    p.append(f'<text x="{more_x}" y="{ly + 11}" fill="#6f97b0" font-size="11" '
+             f'text-anchor="end">{esc(S["legend"][1])}</text>')
+    p.append('</svg>')
+    return "".join(p)
+
+
+# --------------------------------------------------------------------------- #
 #  README: seccion de proyectos                                               #
 # --------------------------------------------------------------------------- #
-def projects_md(repos, S):
+def projects_md(repos, S, lang):
     rows = sorted(repos, key=lambda r: r.get("updated_at", ""), reverse=True)
     th = S["th"]
     lines = [f"| {th[0]} | {th[1]} | {th[2]} | {th[3]} |", "| --- | --- | --- | --- |"]
     for r in rows:
         name = r.get("name", "")
-        lang = (r.get("language") or "-")
-        desc = (r.get("description") or "").strip() or "-"
+        stack = (r.get("language") or "-")   # ojo: no llamarlo `lang`, pisa el idioma
+        desc = (r.get("description") or "").strip()
+        if not desc:
+            desc = PRIVATE_DESC.get(name, {}).get(lang, "-")
         url = r.get("html_url", "")
         if r.get("private", False):
             title = "**" + esc(name) + "**"
@@ -485,7 +700,7 @@ def projects_md(repos, S):
             title = "**[" + esc(name) + "](" + url + ")**"
             stars = r.get("stargazers_count", 0)
             status = (S["public"] + " . " + str(stars) + " " + S["stars"]) if stars else S["public"]
-        lines.append(f"| {title} | `{esc(lang)}` | {esc(desc)} | {status} |")
+        lines.append(f"| {title} | `{esc(stack)}` | {esc(desc)} | {status} |")
     return "\n".join(lines)
 
 
@@ -586,34 +801,6 @@ def quick_badges():
         f'style=for-the-badge&labelColor={_BG}" alt="focus"/>')
 
 
-def stats_card():
-    return (f'<img height="175" src="https://github-readme-stats.vercel.app/api?'
-            f'username={USERNAME}&show_icons=true&hide_border=true&count_private=true&'
-            f'include_all_commits=true&custom_title=Niko%27s%20GitHub%20stats&'
-            f'bg_color={_BG}&title_color=f472b6&text_color=9fb3d8&'
-            f'icon_color=22d3ee" alt="Niko GitHub stats"/>')
-
-
-def streak_card():
-    return (f'<img height="175" src="https://streak-stats.demolab.com/?'
-            f'user={USERNAME}&hide_border=true&background={_BG}&stroke=2dd4bf&ring=f472b6&'
-            f'fire=fbbf24&currStreakLabel=22d3ee&sideLabels=9fb3d8&dates=6b7aa8&'
-            f'currStreakNum=eaf2ff&sideNums=eaf2ff&dayLabels=9fb3d8" alt="streak"/>')
-
-
-def activity_graph():
-    return (f'<img width="100%" src="https://github-readme-activity-graph.vercel.app/graph?'
-            f'username={USERNAME}&custom_title=Niko%27s%20contribution%20graph&'
-            f'bg_color={_BG}&color=f472b6&line=22d3ee&point=fbbf24&'
-            f'area=true&hide_border=true" alt="Niko contribution activity"/>')
-
-
-def trophies():
-    return (f'<img src="https://github-profile-trophy.vercel.app/?username={USERNAME}&'
-            f'theme=algolia&no-frame=true&no-bg=true&column=7&margin-w=6&margin-h=6" '
-            f'alt="trophies"/>')
-
-
 def snake_img():
     base = f"https://raw.githubusercontent.com/{USERNAME}/{USERNAME}/output"
     return f'<img width="100%" src="{base}/snake-dark.svg" alt="contribution snake"/>'
@@ -632,9 +819,21 @@ def connect_section():
     return "\n".join(out)
 
 
-def build_readme(lang, projects_table, updated):
+def build_readme(lang, projects_table, updated, has_activity):
     S = STRINGS[lang]
     bullets = "\n".join("- " + b for b in S["bullets"])
+    # Sin datos de GraphQL se omite el bloque entero en vez de dejar una imagen
+    # rota, que es justo lo que hacian los widgets externos a los que reemplaza.
+    activity_block = f"""## {S['h_activity']}
+
+<div align="center">
+
+<img src="./assets/activity-{lang}.svg" width="100%" alt="{esc(S['act_title'])}" />
+
+</div>
+
+<br/>
+""" if has_activity else ""
     return f"""{lang_switch(lang)}
 
 <div align="center">
@@ -651,30 +850,13 @@ def build_readme(lang, projects_table, updated):
 
 <div align="center">
 
-{stats_card()}
-&nbsp;
-{streak_card()}
-
-</div>
-
-## {S['h_activity']}
-
-<div align="center">
-
-{activity_graph()}
+<img src="./assets/stats-{lang}.svg" width="100%" alt="{esc(S['h_stats'])}" />
 
 </div>
 
 <br/>
 
-<div align="center">
-
-<img src="./assets/stats-{lang}.svg" width="100%" alt="metrics" />
-
-</div>
-
-<br/>
-
+{activity_block}
 <img src="./assets/languages-{lang}.svg" width="100%" alt="{esc(S['lang_title'])}" />
 
 <br/>
@@ -737,10 +919,15 @@ def main():
     repos = fetch_repos()
     profile = fetch_profile()
     langs = aggregate_languages(repos)
-    top_lang = langs[0]["name"] if langs else "code"
+    contrib = fetch_contributions()
+    current, longest = streaks(contrib["weeks"]) if contrib else (0, 0)
+    followers = contrib["followers"] if contrib else profile.get("followers", 0)
     total_stars = sum(r.get("stargazers_count", 0) for r in repos)
     created = profile.get("created_at", "2023-01-01T00:00:00Z")[:4]
-    values = [str(len(repos)), str(total_stars), str(len(langs)), created]
+    values = [str(len(repos)),
+              str(contrib["commits"]) if contrib else "-",
+              str(contrib["total"]) if contrib else "-",
+              str(len(langs)), str(followers), created]
     updated = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
 
     os.makedirs(ASSETS, exist_ok=True)
@@ -751,15 +938,20 @@ def main():
 
     for l in LANGS:
         S = STRINGS[l]
-        write(os.path.join(ASSETS, f"header-{l}.svg"), header_svg(top_lang, S["roles"]))
+        write(os.path.join(ASSETS, f"header-{l}.svg"), header_svg(S["roles"]))
         write(os.path.join(ASSETS, f"languages-{l}.svg"),
               languages_svg(langs, S["lang_title"], S["lang_note"]))
         metrics = list(zip(S["stats"], values))
         write(os.path.join(ASSETS, f"stats-{l}.svg"), stats_svg(metrics))
+        if contrib:
+            write(os.path.join(ASSETS, f"activity-{l}.svg"),
+                  activity_svg(contrib, current, longest, S))
         write(os.path.join(os.path.dirname(ASSETS), FILES[l]),
-              build_readme(l, projects_md(repos, S), updated))
+              build_readme(l, projects_md(repos, S, l), updated, bool(contrib)))
 
-    print("done. repos:", len(repos), "languages:", len(langs), "stars:", total_stars)
+    print("done. repos:", len(repos), "languages:", len(langs), "stars:", total_stars,
+          "contributions:", contrib["total"] if contrib else "n/a",
+          "streak:", current, "/", longest)
 
 
 if __name__ == "__main__":
