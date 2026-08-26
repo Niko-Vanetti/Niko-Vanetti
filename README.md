@@ -77,11 +77,13 @@
 
 <br/>
 
-## Gráfico de contribuciones
+## La serpiente
 
 <div align="center">
 
 <img width="100%" src="https://raw.githubusercontent.com/Niko-Vanetti/Niko-Vanetti/output/snake-dark.svg" alt="contribution snake"/>
+
+_Recorre el calendario de aquí arriba y se va comiendo los días en los que hubo actividad. Se rehace a diario con esos mismos datos._
 
 </div>
 
@@ -114,6 +116,6 @@ Todo este perfil está generado por código. La cabecera, las métricas, el grá
 
 <div align="center">
 
-_Última actualización: 2026-08-26 01:42 UTC_
+_Última actualización: 2026-08-26 02:02 UTC_
 
 </div>

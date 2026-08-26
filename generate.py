@@ -43,7 +43,9 @@ STRINGS = {
         "h_stats": "GitHub stats",
         "h_activity": "Contribution activity",
         "h_tech": "Tech stack",
-        "h_snake": "Contribution graph",
+        "h_snake": "The snake",
+        "snake_note": ("It walks the calendar above and eats every day that had "
+                       "activity. Rebuilt daily from the same contribution data."),
         "act_title": "CONTRIBUTION ACTIVITY",
         "act_note": "// last 12 months",
         "streaks": ["Current streak", "Longest streak", "Last 12 months"],
@@ -88,7 +90,9 @@ STRINGS = {
         "h_stats": "Estadísticas",
         "h_activity": "Actividad de contribuciones",
         "h_tech": "Tecnologías",
-        "h_snake": "Gráfico de contribuciones",
+        "h_snake": "La serpiente",
+        "snake_note": ("Recorre el calendario de aquí arriba y se va comiendo los días "
+                       "en los que hubo actividad. Se rehace a diario con esos mismos datos."),
         "act_title": "ACTIVIDAD DE CONTRIBUCIONES",
         "act_note": "// últimos 12 meses",
         "streaks": ["Racha actual", "Racha más larga", "Últimos 12 meses"],
@@ -878,6 +882,8 @@ def build_readme(lang, projects_table, updated, has_activity):
 <div align="center">
 
 {snake_img()}
+
+_{S['snake_note']}_
 
 </div>
 
