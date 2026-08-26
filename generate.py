@@ -59,7 +59,7 @@ STRINGS = {
         "stats": ["Repos", "Commits 12m", "Contrib. 12m", "Languages", "Followers", "Since"],
         "selected": "Selected work",
         "th": ["Project", "Stack", "What it is", "Status"],
-        "private": "private", "public": "public", "stars": "stars", "live": "live demo",
+        "private": "private", "public": "public", "stars": "stars",
         "about_title": "About",
         "about": (
             "I build developer tooling, AI agents and embedded/mechatronics systems. "
@@ -106,7 +106,7 @@ STRINGS = {
         "stats": ["Repos", "Commits 12m", "Contrib. 12m", "Lenguajes", "Seguidores", "Desde"],
         "selected": "Trabajo seleccionado",
         "th": ["Proyecto", "Stack", "Qué es", "Estado"],
-        "private": "privado", "public": "público", "stars": "estrellas", "live": "ver en vivo",
+        "private": "privado", "public": "público", "stars": "estrellas",
         "about_title": "Acerca de",
         "about": (
             "Construyo herramientas para desarrolladores, agentes de IA y sistemas "
@@ -150,13 +150,32 @@ DEFAULT_COLOR = "#6b7280"
 # en vivo es lo unico que un visitante puede realmente abrir.
 LIVE = {
     "niko-ide-verilog": "https://ide-hdl-verilog.web.app",
+    "mercurio-platform": "https://mercuriosystems.com/es/",
 }
+
+# Como se muestra cada repo: nombre legible en vez del slug, ya que el enlace
+# se encarga de llevar al sitio. Un repo que no figure sale con su nombre crudo.
+TITLES = {
+    "gg-groups": "GG Groups",
+    "key-rotator": "KeyRotator",
+    "niko-ide-verilog": "Niko IDE Verilog",
+    "niko-skills": "Niko Skills",
+    "niko-skills-unlocked": "Niko Skills Unlocked",
+    "mercurio-platform": "Mercurio Systems",
+    "game-guard": "Game Guard",
+    "niko-agents": "Niko Agents",
+    "Windows-Startup-Manager": "Windows Startup Manager",
+}
+
+# Repos que existen pero no van en el perfil (trabajos de clase y demas).
+HIDE = {"Jose_Sanchez_PM_2025_C2"}
 
 # Proyectos que no viven en un repo propio: los de un colaborador, o productos
 # cuyo codigo no esta en esta cuenta. Se listan por su web, que es lo unico que
 # un visitante puede abrir de todos modos.
 EXTRA_PROJECTS = [
-    {"name": "MoneyBox", "stack": "Web", "url": "https://moneyboxrd.com",
+    {"name": "MoneyBoxRD", "stack": "Web", "url": "https://moneyboxrd.com",
+     "status": "private",
      "es": "Ahorro por certificados al 7% garantizado y descuentos en comercios afiliados.",
      "en": "Savings certificates at a guaranteed 7% plus discounts at partner stores."},
 ]
@@ -183,17 +202,16 @@ DESCRIPTIONS = {
         "es": "Backup privado y completo de todas mis skills de Claude Code, personales incluidas.",
         "en": "Full private backup of all my Claude Code skills, personal ones included."},
     "mercurio-platform": {
-        "es": "Plataforma de Mercurio Systems: sitio web y consola de operación.",
-        "en": "Mercurio Systems platform: website and operations console."},
+        "es": "Sistemas digitales para negocios: reservas online, CRM, automatización, "
+              "dashboards y software a medida.",
+        "en": "Digital systems for businesses: online booking, CRM, automation, dashboards "
+              "and custom software."},
     "game-guard": {
         "es": "Bloqueo de videojuegos por horario en Windows.",
         "en": "Schedule-based videogame blocking for Windows."},
     "niko-agents": {
         "es": "Agentes y automatizaciones en Python con orquestación de flujos.",
         "en": "Python agents and automations with workflow orchestration."},
-    "Jose_Sanchez_PM_2025_C2": {
-        "es": "Tareas de Programación para Mecatrónicos del C2 del ITLA.",
-        "en": "Coursework for Programming for Mechatronics, term C2 at ITLA."},
     "Windows-Startup-Manager": {
         "es": "App de escritorio en Python para optimizar Windows: gestiona los programas "
               "de inicio y desactiva servicios en segundo plano no esenciales de forma segura.",
@@ -733,7 +751,8 @@ def activity_svg(contrib, current, longest, S):
 #  README: seccion de proyectos                                               #
 # --------------------------------------------------------------------------- #
 def projects_md(repos, S, lang):
-    rows = sorted(repos, key=lambda r: r.get("updated_at", ""), reverse=True)
+    rows = [r for r in sorted(repos, key=lambda r: r.get("updated_at", ""),
+                              reverse=True) if r.get("name") not in HIDE]
     th = S["th"]
     lines = [f"| {th[0]} | {th[1]} | {th[2]} | {th[3]} |", "| --- | --- | --- | --- |"]
     for r in rows:
@@ -741,20 +760,21 @@ def projects_md(repos, S, lang):
         stack = (r.get("language") or "-")   # ojo: no llamarlo `lang`, pisa el idioma
         desc = (DESCRIPTIONS.get(name, {}).get(lang)
                 or (r.get("description") or "").strip() or "-")
-        url = r.get("html_url", "")
-        if r.get("private", False):
-            title = "**" + esc(name) + "**"
+        private = r.get("private", False)
+        # El enlace va en el nombre: la web del producto si la hay, si no el
+        # repo. Un repo privado sin web queda sin enlace, no hay que abrir.
+        link = LIVE.get(name) or ("" if private else r.get("html_url", ""))
+        label = esc(TITLES.get(name, name))
+        title = f"**[{label}]({link})**" if link else f"**{label}**"
+        if private:
             status = S["private"]
         else:
-            title = "**[" + esc(name) + "](" + url + ")**"
             stars = r.get("stargazers_count", 0)
             status = (S["public"] + " . " + str(stars) + " " + S["stars"]) if stars else S["public"]
-        if name in LIVE:
-            status += " . [" + S["live"] + "](" + LIVE[name] + ")"
         lines.append(f"| {title} | `{esc(stack)}` | {esc(desc)} | {status} |")
     for p in EXTRA_PROJECTS:
         lines.append(f'| **[{esc(p["name"])}]({p["url"]})** | `{esc(p["stack"])}` | '
-                     f'{esc(p[lang])} | {S["live"]} |')
+                     f'{esc(p[lang])} | {S[p["status"]]} |')
     return "\n".join(lines)
 
 
