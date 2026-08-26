@@ -64,16 +64,16 @@
 
 | Proyecto | Stack | Qué es | Estado |
 | --- | --- | --- | --- |
-| **[gg-groups](https://github.com/Niko-Vanetti/gg-groups)** | `JavaScript` | Your whole activity bar in one panel: every sidebar icon visible at once, grouped into folders you make by dragging one icon onto another. | público |
-| **[key-rotator](https://github.com/Niko-Vanetti/key-rotator)** | `TypeScript` | KeyRotator: VS Code extension to rotate AI provider API keys and run an agent (NVIDIA Build/OpenRouter) with tools, agency mode and viability analysis | público |
+| **[gg-groups](https://github.com/Niko-Vanetti/gg-groups)** | `JavaScript` | Toda la barra de actividad en un panel: cada icono de la barra lateral visible a la vez, agrupado en carpetas que creas arrastrando un icono sobre otro. | público |
+| **[key-rotator](https://github.com/Niko-Vanetti/key-rotator)** | `TypeScript` | Extensión de VS Code para rotar API keys de proveedores de IA y correr un agente (NVIDIA Build/OpenRouter) con herramientas, modo agencia y análisis de viabilidad. | público |
 | **niko-ide-verilog** | `TypeScript` | IDE web de Verilog en español: editor, simulación y vista RTL en el navegador. | privado |
-| **niko-skills-unlocked** | `-` | Backup privado y completo de todas mis skills de Claude Code (incluye las personales) | privado |
-| **[niko-skills](https://github.com/Niko-Vanetti/niko-skills)** | `-` | Colección de skills genéricas para Claude Code / agentes IA — dev, negocio, contenido | público |
+| **niko-skills-unlocked** | `-` | Backup privado y completo de todas mis skills de Claude Code, personales incluidas. | privado |
+| **[niko-skills](https://github.com/Niko-Vanetti/niko-skills)** | `-` | Colección de skills genéricas para Claude Code / agentes IA: dev, negocio, contenido. | público |
 | **mercurio-platform** | `TypeScript` | Plataforma de Mercurio Systems: sitio web y consola de operación. | privado |
-| **[game-guard](https://github.com/Niko-Vanetti/game-guard)** | `Python` | Bloqueo de videojuegos por horario en Windows | público |
+| **[game-guard](https://github.com/Niko-Vanetti/game-guard)** | `Python` | Bloqueo de videojuegos por horario en Windows. | público |
 | **niko-agents** | `Python` | Agentes y automatizaciones en Python con orquestación de flujos. | privado |
-| **Jose_Sanchez_PM_2025_C2** | `C` | Repositorio con las tareas de Programación para Mecatrónicos del C2 del ITLA. | privado |
-| **[Windows-Startup-Manager](https://github.com/Niko-Vanetti/Windows-Startup-Manager)** | `Python` | Aplicación en Python con interfaz gráfica para optimizar Windows. Permite gestionar programas de inicio y deshabilitar servicios en segundo plano no esenciales de forma totalmente segura. Esta abierta a modificaciones! | público |
+| **Jose_Sanchez_PM_2025_C2** | `C` | Tareas de Programación para Mecatrónicos del C2 del ITLA. | privado |
+| **[Windows-Startup-Manager](https://github.com/Niko-Vanetti/Windows-Startup-Manager)** | `Python` | App de escritorio en Python para optimizar Windows: gestiona los programas de inicio y desactiva servicios en segundo plano no esenciales de forma segura. | público |
 
 <br/>
 
@@ -116,6 +116,6 @@ Todo este perfil está generado por código. La cabecera, las métricas, el grá
 
 <div align="center">
 
-_Última actualización: 2026-08-26 02:12 UTC_
+_Última actualización: 2026-08-26 02:20 UTC_
 
 </div>

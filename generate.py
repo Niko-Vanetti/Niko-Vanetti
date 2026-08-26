@@ -141,20 +141,50 @@ LINGUIST = {
 }
 DEFAULT_COLOR = "#6b7280"
 
-# Respaldo para repos (normalmente privados) que no tienen `description` en
-# GitHub. Solo se usa si el repo no trae descripcion propia: en cuanto le
-# pongas una en GitHub, esta se ignora y no hay nada que mantener aqui.
-PRIVATE_DESC = {
+# Descripcion por idioma. GitHub guarda UNA sola descripcion por repo, asi que
+# las suyas salen mezcladas: unas en ingles, otras en espanol, y cada README
+# mostraba mal la mitad. Lo que este aqui gana sobre la descripcion de GitHub;
+# un repo que no figure cae a la de GitHub tal cual (util para repos nuevos).
+DESCRIPTIONS = {
+    "gg-groups": {
+        "es": "Toda la barra de actividad en un panel: cada icono de la barra lateral "
+              "visible a la vez, agrupado en carpetas que creas arrastrando un icono sobre otro.",
+        "en": "Your whole activity bar in one panel: every sidebar icon visible at once, "
+              "grouped into folders you make by dragging one icon onto another."},
+    "key-rotator": {
+        "es": "Extensión de VS Code para rotar API keys de proveedores de IA y correr un "
+              "agente (NVIDIA Build/OpenRouter) con herramientas, modo agencia y análisis "
+              "de viabilidad.",
+        "en": "VS Code extension to rotate AI provider API keys and run an agent "
+              "(NVIDIA Build/OpenRouter) with tools, agency mode and viability analysis."},
     "niko-ide-verilog": {
         "es": "IDE web de Verilog en español: editor, simulación y vista RTL en el navegador.",
         "en": "Web Verilog IDE in Spanish: editor, simulation and RTL view in the browser."},
+    "niko-skills": {
+        "es": "Colección de skills genéricas para Claude Code / agentes IA: dev, negocio, contenido.",
+        "en": "Collection of generic skills for Claude Code / AI agents: dev, business, content."},
+    "niko-skills-unlocked": {
+        "es": "Backup privado y completo de todas mis skills de Claude Code, personales incluidas.",
+        "en": "Full private backup of all my Claude Code skills, personal ones included."},
     "mercurio-platform": {
         "es": "Plataforma de Mercurio Systems: sitio web y consola de operación.",
         "en": "Mercurio Systems platform: website and operations console."},
+    "game-guard": {
+        "es": "Bloqueo de videojuegos por horario en Windows.",
+        "en": "Schedule-based videogame blocking for Windows."},
     "niko-agents": {
         "es": "Agentes y automatizaciones en Python con orquestación de flujos.",
         "en": "Python agents and automations with workflow orchestration."},
+    "Jose_Sanchez_PM_2025_C2": {
+        "es": "Tareas de Programación para Mecatrónicos del C2 del ITLA.",
+        "en": "Coursework for Programming for Mechatronics, term C2 at ITLA."},
+    "Windows-Startup-Manager": {
+        "es": "App de escritorio en Python para optimizar Windows: gestiona los programas "
+              "de inicio y desactiva servicios en segundo plano no esenciales de forma segura.",
+        "en": "Python desktop app to tune up Windows: manage startup programs and safely "
+              "disable non-essential background services."},
 }
+
 
 
 # --------------------------------------------------------------------------- #
@@ -693,9 +723,8 @@ def projects_md(repos, S, lang):
     for r in rows:
         name = r.get("name", "")
         stack = (r.get("language") or "-")   # ojo: no llamarlo `lang`, pisa el idioma
-        desc = (r.get("description") or "").strip()
-        if not desc:
-            desc = PRIVATE_DESC.get(name, {}).get(lang, "-")
+        desc = (DESCRIPTIONS.get(name, {}).get(lang)
+                or (r.get("description") or "").strip() or "-")
         url = r.get("html_url", "")
         if r.get("private", False):
             title = "**" + esc(name) + "**"
