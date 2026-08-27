@@ -174,7 +174,7 @@ STACKS = {
 }
 
 # Repos que existen pero no van en el perfil (trabajos de clase y demas).
-HIDE = {"Jose_Sanchez_PM_2025_C2"}
+HIDE = {"Jose_Sanchez_PM_2025_C2", "niko-skills-unlocked"}
 
 # Proyectos que no viven en un repo propio: los de un colaborador, o productos
 # cuyo codigo no esta en esta cuenta. Se listan por su web, que es lo unico que

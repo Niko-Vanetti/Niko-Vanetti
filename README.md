@@ -67,7 +67,6 @@
 | **[GG Groups](https://github.com/Niko-Vanetti/gg-groups)** | `JavaScript` | Toda la barra de actividad en un panel: cada icono de la barra lateral visible a la vez, agrupado en carpetas que creas arrastrando un icono sobre otro. | público |
 | **[KeyRotator](https://github.com/Niko-Vanetti/key-rotator)** | `TypeScript` | Extensión de VS Code para rotar API keys de proveedores de IA y correr un agente (NVIDIA Build/OpenRouter) con herramientas, modo agencia y análisis de viabilidad. | público |
 | **[Niko IDE Verilog](https://ide-hdl-verilog.web.app)** | `TypeScript` | IDE web de Verilog en español: editor, simulación y vista RTL en el navegador. | privado |
-| **Niko Skills Unlocked** | `Markdown` | Backup privado y completo de todas mis skills de Claude Code, personales incluidas. | privado |
 | **[Niko Skills](https://github.com/Niko-Vanetti/niko-skills)** | `Markdown` | Colección de skills genéricas para Claude Code / agentes IA: dev, negocio, contenido. | público |
 | **[Game Guard](https://github.com/Niko-Vanetti/game-guard)** | `Python` | Bloqueo de videojuegos por horario en Windows. | público |
 | **Niko Agents** | `Python` | Agentes y automatizaciones en Python con orquestación de flujos. | privado |
@@ -116,6 +115,6 @@ Todo este perfil está generado por código. La cabecera, las métricas, el grá
 
 <div align="center">
 
-_Última actualización: 2026-08-27 17:38 UTC_
+_Última actualización: 2026-08-27 23:33 UTC_
 
 </div>
