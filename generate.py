@@ -150,7 +150,6 @@ DEFAULT_COLOR = "#6b7280"
 # en vivo es lo unico que un visitante puede realmente abrir.
 LIVE = {
     "niko-ide-verilog": "https://ide-hdl-verilog.web.app",
-    "mercurio-platform": "https://mercuriosystems.com/es/",
 }
 
 # Como se muestra cada repo: nombre legible en vez del slug, ya que el enlace
@@ -161,10 +160,17 @@ TITLES = {
     "niko-ide-verilog": "Niko IDE Verilog",
     "niko-skills": "Niko Skills",
     "niko-skills-unlocked": "Niko Skills Unlocked",
-    "mercurio-platform": "Mercurio Systems",
     "game-guard": "Game Guard",
     "niko-agents": "Niko Agents",
     "Windows-Startup-Manager": "Windows Startup Manager",
+}
+
+# Stack para repos donde GitHub no detecta lenguaje (los de puro Markdown
+# quedaban con un guion en la tabla). Solo se usa si GitHub no reporta nada:
+# en cuanto el repo tenga codigo, gana el lenguaje real.
+STACKS = {
+    "niko-skills": "Markdown",
+    "niko-skills-unlocked": "Markdown",
 }
 
 # Repos que existen pero no van en el perfil (trabajos de clase y demas).
@@ -174,6 +180,12 @@ HIDE = {"Jose_Sanchez_PM_2025_C2"}
 # cuyo codigo no esta en esta cuenta. Se listan por su web, que es lo unico que
 # un visitante puede abrir de todos modos.
 EXTRA_PROJECTS = [
+    {"name": "Mercurio Systems", "stack": "TypeScript", "status": "private",
+     "url": "https://mercuriosystems.com/es/",
+     "es": "Sistemas digitales para negocios: reservas online, CRM, automatización, "
+           "dashboards y software a medida.",
+     "en": "Digital systems for businesses: online booking, CRM, automation, dashboards "
+           "and custom software."},
     {"name": "MoneyBoxRD", "stack": "Web", "url": "https://moneyboxrd.com",
      "status": "private",
      "es": "Ahorro por certificados al 7% garantizado y descuentos en comercios afiliados.",
@@ -201,11 +213,6 @@ DESCRIPTIONS = {
     "niko-skills-unlocked": {
         "es": "Backup privado y completo de todas mis skills de Claude Code, personales incluidas.",
         "en": "Full private backup of all my Claude Code skills, personal ones included."},
-    "mercurio-platform": {
-        "es": "Sistemas digitales para negocios: reservas online, CRM, automatización, "
-              "dashboards y software a medida.",
-        "en": "Digital systems for businesses: online booking, CRM, automation, dashboards "
-              "and custom software."},
     "game-guard": {
         "es": "Bloqueo de videojuegos por horario en Windows.",
         "en": "Schedule-based videogame blocking for Windows."},
@@ -757,7 +764,8 @@ def projects_md(repos, S, lang):
     lines = [f"| {th[0]} | {th[1]} | {th[2]} | {th[3]} |", "| --- | --- | --- | --- |"]
     for r in rows:
         name = r.get("name", "")
-        stack = (r.get("language") or "-")   # ojo: no llamarlo `lang`, pisa el idioma
+        # ojo: no llamarlo `lang`, pisa el parametro de idioma
+        stack = r.get("language") or STACKS.get(name) or "-"
         desc = (DESCRIPTIONS.get(name, {}).get(lang)
                 or (r.get("description") or "").strip() or "-")
         private = r.get("private", False)
