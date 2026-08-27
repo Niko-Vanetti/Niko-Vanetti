@@ -69,7 +69,6 @@
 | **[Niko IDE Verilog](https://ide-hdl-verilog.web.app)** | `TypeScript` | IDE web de Verilog en español: editor, simulación y vista RTL en el navegador. | privado |
 | **Niko Skills Unlocked** | `-` | Backup privado y completo de todas mis skills de Claude Code, personales incluidas. | privado |
 | **[Niko Skills](https://github.com/Niko-Vanetti/niko-skills)** | `-` | Colección de skills genéricas para Claude Code / agentes IA: dev, negocio, contenido. | público |
-| **[Mercurio Systems](https://mercuriosystems.com/es/)** | `TypeScript` | Sistemas digitales para negocios: reservas online, CRM, automatización, dashboards y software a medida. | privado |
 | **[Game Guard](https://github.com/Niko-Vanetti/game-guard)** | `Python` | Bloqueo de videojuegos por horario en Windows. | público |
 | **Niko Agents** | `Python` | Agentes y automatizaciones en Python con orquestación de flujos. | privado |
 | **[Windows Startup Manager](https://github.com/Niko-Vanetti/Windows-Startup-Manager)** | `Python` | App de escritorio en Python para optimizar Windows: gestiona los programas de inicio y desactiva servicios en segundo plano no esenciales de forma segura. | público |
@@ -116,6 +115,6 @@ Todo este perfil está generado por código. La cabecera, las métricas, el grá
 
 <div align="center">
 
-_Última actualización: 2026-08-26 18:42 UTC_
+_Última actualización: 2026-08-27 02:09 UTC_
 
 </div>
