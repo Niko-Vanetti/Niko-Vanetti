@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Generador del perfil de GitHub de Nikorasu-Vanetti.
+Generador del perfil de GitHub de Niko Vanetti.
 
 Lee los repositorios vía la API de GitHub y regenera, a partir de datos reales:
   - assets/header.svg        Banner PCB/blueprint animado (identidad).
@@ -26,8 +26,7 @@ ASSETS = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets")
 README = os.path.join(os.path.dirname(os.path.abspath(__file__)), "README.md")
 
 # Identidad (lo unico curado a mano; el resto es 100% derivado de datos).
-FULL_NAME = "Niko-Vanetti"
-ALIAS = "@Nikorasu-Vanetti"
+FULL_NAME = "Niko Vanetti"
 
 # Textos por idioma. La identidad (nombre/alias) no se traduce; todo lo demas si.
 LANGS = ["es", "en"]  # primero el default (es = README.md)
@@ -478,14 +477,11 @@ def header_svg(roles):
     parts.append(f'<text x="58" y="158" font-size="50" font-weight="800" letter-spacing="0.5" '
                  f'fill="#f4f8ff" stroke="#000000" stroke-width="5" paint-order="stroke" '
                  f'stroke-linejoin="round" class="name">{esc(FULL_NAME)}</text>')
-    parts.append(f'<text x="60" y="198" fill="#7dd3fc" class="mono fade2" font-size="20" '
-                 f'font-weight="700" letter-spacing="4" stroke="#000000" stroke-width="3" '
-                 f'paint-order="stroke" stroke-linejoin="round">{esc(ALIAS)}</text>')
 
     # ---- roles rotativos + cursor ----
     parts.append('<g class="fade2">')
     for i, ph in enumerate(roles[:3]):
-        parts.append(f'<text x="60" y="244" fill="#cdd9f0" class="mono role" font-size="15" '
+        parts.append(f'<text x="60" y="216" fill="#cdd9f0" class="mono role" font-size="15" '
                      f'stroke="#000000" stroke-width="2.4" paint-order="stroke" '
                      f'stroke-linejoin="round" style="animation-delay:{i * 3:.0f}s">&gt; {esc(ph)}'
                      f'<tspan class="cur" fill="#fbbf24">_</tspan></text>')
@@ -498,10 +494,10 @@ def header_svg(roles):
     parts.append('<g class="fade2">')
     for label, c in chips:
         bw = 38 + int(len(label) * 7.3)  # cabe dot + texto mono 12 + padding
-        parts.append(f'<rect x="{xx}" y="276" width="{bw}" height="26" rx="13" fill="#0d1640" '
+        parts.append(f'<rect x="{xx}" y="258" width="{bw}" height="26" rx="13" fill="#0d1640" '
                      f'stroke="{c}" stroke-width="1.3"/>')
-        parts.append(f'<circle cx="{xx + 14}" cy="289" r="4" fill="{c}"/>')
-        parts.append(f'<text x="{xx + 26}" y="293" fill="{silk}" class="mono" font-size="12" '
+        parts.append(f'<circle cx="{xx + 14}" cy="271" r="4" fill="{c}"/>')
+        parts.append(f'<text x="{xx + 26}" y="275" fill="{silk}" class="mono" font-size="12" '
                      f'stroke="#000000" stroke-width="2" paint-order="stroke" '
                      f'stroke-linejoin="round">{esc(label)}</text>')
         xx += bw + 12
@@ -844,23 +840,21 @@ TECH = [
         badge("TypeScript", "3178C6", "typescript"),
         badge("JavaScript", "F7DF1E", "javascript", "black"),
         badge("Python", "3776AB", "python"), badge("C", "A8B9CC", "c", "black"),
-        badge("C++", "00599C", "cplusplus"), badge("Swift", "F05138", "swift"),
-        badge("Kotlin", "7F52FF", "kotlin"), badge("Java", "ED8B00", "openjdk"),
+        badge("C++", "00599C", "cplusplus"), badge("Java", "ED8B00", "openjdk"),
         badge("Verilog", "848BF3"),
     ]),
     ("Web & UI", "Web y UI", [
         badge("React", "20232A", "react", "61DAFB"), badge("HTML5", "E34F26", "html5"),
         badge("CSS3", "1572B6", "css3"), badge("Node.js", "339933", "nodedotjs"),
-        badge("Vite", "646CFF", "vite"),
     ]),
     ("Tooling & DevOps", "Herramientas y DevOps", [
         badge("Git", "F05032", "git"), badge("GitHub Actions", "2088FF", "githubactions"),
         badge("Docker", "2496ED", "docker"), badge("Linux", "FCC624", "linux", "black"),
         badge("VS Code", "007ACC", "visualstudiocode"),
     ]),
-    ("AI & data", "IA y datos", [
+    # sin Pandas ni NumPy esta fila ya no tiene nada de "datos"
+    ("AI", "IA", [
         badge("OpenAI", "412991", "openai"), badge("Anthropic", "191919", "anthropic"),
-        badge("Pandas", "150458", "pandas"), badge("NumPy", "013243", "numpy"),
     ]),
 ]
 
