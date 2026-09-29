@@ -854,7 +854,11 @@ TECH = [
     ]),
     # sin Pandas ni NumPy esta fila ya no tiene nada de "datos"
     ("AI", "IA", [
+        # el slug "openai" ya no trae icono en simple-icons (badge de solo
+        # texto desde hace tiempo); Anthropic si lo trae.
         badge("OpenAI", "412991", "openai"), badge("Anthropic", "191919", "anthropic"),
+        badge("Cursor", "000000", "cursor"), badge("Gemini", "8E75B2", "googlegemini"),
+        badge("DeepSeek", "5786FE", "deepseek"),
     ]),
 ]
 
