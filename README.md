@@ -64,6 +64,7 @@
 
 | Proyecto | Stack | Qué es | Estado |
 | --- | --- | --- | --- |
+| **Niko-Finanzas** | `-` | - | privado |
 | **WRO-Team** | `Python` | - | privado |
 | **[Niko IDE Verilog](https://ide-hdl-verilog.web.app)** | `TypeScript` | IDE web de Verilog en español: editor, simulación y vista RTL en el navegador. | privado |
 | **Proyecto-BangBoots** | `C++` | Diseño educativo de robots expresivos con ESP32: arquitectura, materiales, app BangBoots y plan de validación. Prototipo pendiente de implementación. | privado |
@@ -117,6 +118,6 @@ Todo este perfil está generado por código. La cabecera, las métricas, el grá
 
 <div align="center">
 
-_Última actualización: 2026-10-05 14:42 UTC_
+_Última actualización: 2026-10-06 13:19 UTC_
 
 </div>
