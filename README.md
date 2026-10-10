@@ -64,15 +64,15 @@
 
 | Proyecto | Stack | Qué es | Estado |
 | --- | --- | --- | --- |
-| **Niko-Finanzas** | `-` | - | privado |
+| **Niko Agents** | `Python` | Agentes y automatizaciones en Python con orquestación de flujos. | privado |
 | **WRO-Team** | `Python` | - | privado |
+| **Niko-Finanzas** | `-` | - | privado |
 | **[Niko IDE Verilog](https://ide-hdl-verilog.web.app)** | `TypeScript` | IDE web de Verilog en español: editor, simulación y vista RTL en el navegador. | privado |
 | **Proyecto-BangBoots** | `C++` | Diseño educativo de robots expresivos con ESP32: arquitectura, materiales, app BangBoots y plan de validación. Prototipo pendiente de implementación. | privado |
 | **[KeyRotator](https://github.com/Niko-Vanetti/key-rotator)** | `TypeScript` | Extensión de VS Code para rotar API keys de proveedores de IA y correr un agente (NVIDIA Build/OpenRouter) con herramientas, modo agencia y análisis de viabilidad. | público |
 | **[GG Groups](https://github.com/Niko-Vanetti/gg-groups)** | `JavaScript` | Toda la barra de actividad en un panel: cada icono de la barra lateral visible a la vez, agrupado en carpetas que creas arrastrando un icono sobre otro. | público |
 | **[Niko Skills](https://github.com/Niko-Vanetti/niko-skills)** | `Markdown` | Colección de skills genéricas para Claude Code / agentes IA: dev, negocio, contenido. | público |
 | **[Game Guard](https://github.com/Niko-Vanetti/game-guard)** | `Python` | Bloqueo de videojuegos por horario en Windows. | público |
-| **Niko Agents** | `Python` | Agentes y automatizaciones en Python con orquestación de flujos. | privado |
 | **[Windows Startup Manager](https://github.com/Niko-Vanetti/Windows-Startup-Manager)** | `Python` | App de escritorio en Python para optimizar Windows: gestiona los programas de inicio y desactiva servicios en segundo plano no esenciales de forma segura. | público |
 | **[Mercurio Systems](https://mercuriosystems.com/es/)** | `TypeScript` | Sistemas digitales para negocios: reservas online, CRM, automatización, dashboards y software a medida. | privado |
 | **[MoneyBoxRD](https://moneyboxrd.com)** | `Web` | Ahorro por certificados al 7% garantizado y descuentos en comercios afiliados. | privado |
@@ -118,6 +118,6 @@ Todo este perfil está generado por código. La cabecera, las métricas, el grá
 
 <div align="center">
 
-_Última actualización: 2026-10-09 13:19 UTC_
+_Última actualización: 2026-10-10 12:33 UTC_
 
 </div>
