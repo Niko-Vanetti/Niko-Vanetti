@@ -64,6 +64,7 @@
 
 | Proyecto | Stack | Qué es | Estado |
 | --- | --- | --- | --- |
+| **Carritos** | `-` | Proyecto Carritos | privado |
 | **Niko Agents** | `Python` | Agentes y automatizaciones en Python con orquestación de flujos. | privado |
 | **WRO-Team** | `Python` | - | privado |
 | **Niko-Finanzas** | `-` | - | privado |
@@ -118,6 +119,6 @@ Todo este perfil está generado por código. La cabecera, las métricas, el grá
 
 <div align="center">
 
-_Última actualización: 2026-10-10 12:33 UTC_
+_Última actualización: 2026-10-11 12:51 UTC_
 
 </div>
