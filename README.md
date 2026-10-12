@@ -64,9 +64,9 @@
 
 | Proyecto | Stack | Qué es | Estado |
 | --- | --- | --- | --- |
-| **Carritos** | `-` | Proyecto Carritos | privado |
 | **Niko Agents** | `Python` | Agentes y automatizaciones en Python con orquestación de flujos. | privado |
 | **WRO-Team** | `Python` | - | privado |
+| **Carritos** | `-` | Proyecto Carritos | privado |
 | **Niko-Finanzas** | `-` | - | privado |
 | **[Niko IDE Verilog](https://ide-hdl-verilog.web.app)** | `TypeScript` | IDE web de Verilog en español: editor, simulación y vista RTL en el navegador. | privado |
 | **Proyecto-BangBoots** | `C++` | Diseño educativo de robots expresivos con ESP32: arquitectura, materiales, app BangBoots y plan de validación. Prototipo pendiente de implementación. | privado |
@@ -119,6 +119,6 @@ Todo este perfil está generado por código. La cabecera, las métricas, el grá
 
 <div align="center">
 
-_Última actualización: 2026-10-11 12:51 UTC_
+_Última actualización: 2026-10-12 15:27 UTC_
 
 </div>
