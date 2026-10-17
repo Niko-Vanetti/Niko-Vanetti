@@ -64,8 +64,8 @@
 
 | Proyecto | Stack | Qué es | Estado |
 | --- | --- | --- | --- |
-| **Proyecto-BangBoots** | `C++` | Diseño educativo de robots expresivos con ESP32: arquitectura, materiales, app BangBoots y plan de validación. Prototipo pendiente de implementación. | privado |
 | **WRO-Team** | `C` | - | privado |
+| **Proyecto-BangBoots** | `C++` | Diseño educativo de robots expresivos con ESP32: arquitectura, materiales, app BangBoots y plan de validación. Prototipo pendiente de implementación. | privado |
 | **Niko Agents** | `Python` | Agentes y automatizaciones en Python con orquestación de flujos. | privado |
 | **Carritos** | `-` | Proyecto Carritos | privado |
 | **Niko-Finanzas** | `-` | - | privado |
@@ -119,6 +119,6 @@ Todo este perfil está generado por código. La cabecera, las métricas, el grá
 
 <div align="center">
 
-_Última actualización: 2026-10-16 11:26 UTC_
+_Última actualización: 2026-10-17 10:46 UTC_
 
 </div>
