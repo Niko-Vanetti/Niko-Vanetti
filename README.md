@@ -65,9 +65,9 @@
 | Proyecto | Stack | Qué es | Estado |
 | --- | --- | --- | --- |
 | **Proyecto-BangBoots** | `C` | Diseño educativo de robots expresivos con ESP32: arquitectura, materiales, app BangBoots y plan de validación. Prototipo pendiente de implementación. | privado |
+| **Carritos** | `-` | Proyecto Carritos | privado |
 | **WRO-Team** | `C` | - | privado |
 | **Niko Agents** | `Python` | Agentes y automatizaciones en Python con orquestación de flujos. | privado |
-| **Carritos** | `-` | Proyecto Carritos | privado |
 | **Niko-Finanzas** | `-` | - | privado |
 | **[Niko IDE Verilog](https://ide-hdl-verilog.web.app)** | `TypeScript` | IDE web de Verilog en español: editor, simulación y vista RTL en el navegador. | privado |
 | **[KeyRotator](https://github.com/Niko-Vanetti/key-rotator)** | `TypeScript` | Extensión de VS Code para rotar API keys de proveedores de IA y correr un agente (NVIDIA Build/OpenRouter) con herramientas, modo agencia y análisis de viabilidad. | público |
@@ -119,6 +119,6 @@ Todo este perfil está generado por código. La cabecera, las métricas, el grá
 
 <div align="center">
 
-_Última actualización: 2026-10-29 13:03 UTC_
+_Última actualización: 2026-10-30 12:57 UTC_
 
 </div>
