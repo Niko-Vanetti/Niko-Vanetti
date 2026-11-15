@@ -64,6 +64,7 @@
 
 | Proyecto | Stack | Qué es | Estado |
 | --- | --- | --- | --- |
+| **earth-trend-detective** | `Python` | NASA Space Apps Challenge 2026: find, visualize and test trends in Earth science variables | privado |
 | **Ascensor-de-controles-Electricos** | `C` | Ascensor de controles electricos - HMI ESP32-P4 (CrowPanel P4) con logica por bloques, reconstruida desde el firmware de la placa | privado |
 | **Proyecto-BangBoots** | `C++` | Diseño educativo de robots expresivos con ESP32: arquitectura, materiales, app BangBoots y plan de validación. Prototipo pendiente de implementación. | privado |
 | **Carritos** | `-` | Proyecto Carritos | privado |
@@ -120,6 +121,6 @@ Todo este perfil está generado por código. La cabecera, las métricas, el grá
 
 <div align="center">
 
-_Última actualización: 2026-11-14 13:32 UTC_
+_Última actualización: 2026-11-15 13:57 UTC_
 
 </div>
