@@ -64,9 +64,10 @@
 
 | Proyecto | Stack | Qué es | Estado |
 | --- | --- | --- | --- |
+| **[Ascensor-de-controles-Electricos](https://github.com/Niko-Vanetti/Ascensor-de-controles-Electricos)** | `C` | Ascensor de controles electricos - HMI ESP32-P4 (CrowPanel P4) con logica por bloques, reconstruida desde el firmware de la placa | público |
+| **Proyecto-BangBoots-3D** | `HTML` | Modelos 3D, STL y diseno mecanico del BangBot (solo ultimas versiones) | privado |
 | **[orbiting-the-earth-demo](https://github.com/Niko-Vanetti/orbiting-the-earth-demo)** | `-` | Public 30-second demonstration of Orbiting The Earth for NASA Space Apps | público |
 | **earth-trend-detective** | `Python` | NASA Space Apps Challenge 2026: find, visualize and test trends in Earth science variables | privado |
-| **Ascensor-de-controles-Electricos** | `C` | Ascensor de controles electricos - HMI ESP32-P4 (CrowPanel P4) con logica por bloques, reconstruida desde el firmware de la placa | privado |
 | **Proyecto-BangBoots** | `C++` | Diseño educativo de robots expresivos con ESP32: arquitectura, materiales, app BangBoots y plan de validación. Prototipo pendiente de implementación. | privado |
 | **Carritos** | `-` | Proyecto Carritos | privado |
 | **WRO-Team** | `C` | - | privado |
@@ -122,6 +123,6 @@ Todo este perfil está generado por código. La cabecera, las métricas, el grá
 
 <div align="center">
 
-_Última actualización: 2026-11-16 15:49 UTC_
+_Última actualización: 2026-11-17 16:01 UTC_
 
 </div>
