@@ -64,9 +64,9 @@
 
 | Proyecto | Stack | Qué es | Estado |
 | --- | --- | --- | --- |
+| **Game-Project** | `JavaScript` | Game Project | Pangea, aventura de acción e investigación en pixel art | privado |
 | **[Ascensor-de-controles-Electricos](https://github.com/Niko-Vanetti/Ascensor-de-controles-Electricos)** | `C` | Ascensor de controles electricos - HMI ESP32-P4 (CrowPanel P4) con logica por bloques, reconstruida desde el firmware de la placa | público |
 | **Proyecto-BangBoots-3D** | `HTML` | Modelos 3D, STL y diseno mecanico del BangBot (solo ultimas versiones) | privado |
-| **[orbiting-the-earth-demo](https://github.com/Niko-Vanetti/orbiting-the-earth-demo)** | `-` | Public 30-second demonstration of Orbiting The Earth for NASA Space Apps | público |
 | **earth-trend-detective** | `Python` | NASA Space Apps Challenge 2026: find, visualize and test trends in Earth science variables | privado |
 | **Proyecto-BangBoots** | `C++` | Diseño educativo de robots expresivos con ESP32: arquitectura, materiales, app BangBoots y plan de validación. Prototipo pendiente de implementación. | privado |
 | **Carritos** | `-` | Proyecto Carritos | privado |
@@ -123,6 +123,6 @@ Todo este perfil está generado por código. La cabecera, las métricas, el grá
 
 <div align="center">
 
-_Última actualización: 2026-11-18 15:40 UTC_
+_Última actualización: 2026-11-19 15:45 UTC_
 
 </div>
