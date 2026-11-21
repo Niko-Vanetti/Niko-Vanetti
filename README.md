@@ -64,6 +64,9 @@
 
 | Proyecto | Stack | Qué es | Estado |
 | --- | --- | --- | --- |
+| **[niko-anime-extensions-for-aniyomi](https://github.com/Niko-Vanetti/niko-anime-extensions-for-aniyomi)** | `-` | Niko Extensions for Aniyomi - extensiones de anime en español | público |
+| **[niko-manga-extensions-for-aniyomi](https://github.com/Niko-Vanetti/niko-manga-extensions-for-aniyomi)** | `-` | Niko Manga Extensions for Aniyomi | público |
+| **aniyomi-extensions-fix** | `Kotlin` | Private fork of Kohi-den/extensions-source with fixes | privado |
 | **Game-Project** | `JavaScript` | Game Project | Pangea, aventura de acción e investigación en pixel art | privado |
 | **[Ascensor-de-controles-Electricos](https://github.com/Niko-Vanetti/Ascensor-de-controles-Electricos)** | `C` | Ascensor de controles electricos - HMI ESP32-P4 (CrowPanel P4) con logica por bloques, reconstruida desde el firmware de la placa | público |
 | **Proyecto-BangBoots-3D** | `HTML` | Modelos 3D, STL y diseno mecanico del BangBot (solo ultimas versiones) | privado |
@@ -123,6 +126,6 @@ Todo este perfil está generado por código. La cabecera, las métricas, el grá
 
 <div align="center">
 
-_Última actualización: 2026-11-20 15:28 UTC_
+_Última actualización: 2026-11-21 14:40 UTC_
 
 </div>
